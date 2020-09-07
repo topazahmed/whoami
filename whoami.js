@@ -2,7 +2,8 @@
     "use strict";
 
     console.log("Who Am I?");
-    var ActiveCardId = 10;
+    var ActiveCardId = 100;
+
 
 
     document.onmousemove = handleMouseMove;
@@ -11,9 +12,6 @@
 
         event = event || window.event; // IE-ism
 
-        // If pageX/Y aren't available and clientX/Y
-        // are, calculate pageX/Y - logic taken from jQuery
-        // Calculate pageX/Y if missing and clientX/Y available
         if (event.pageX == null && event.clientX != null) {
             eventDoc = (event.target && event.target.ownerDocument) || document;
             doc = eventDoc.documentElement;
@@ -44,20 +42,42 @@
 
     }
 
-    function getCurrentCard() {
+    function getCurrentCardId() {
         var $activeCard = $(".card.active");
-        var cardId = $($activeCard).Id;
+        var cardId = $($activeCard).attr("id");
         console.log(cardId);
         ActiveCardId = cardId;
+
+        return ActiveCardId;
     }
 
-    function getNextCard(direction){
+    function showNextCard(cardId) {
+        var $nextCard = $("#" + cardId);
+
+        console.log($nextCard.attr("id"));
+
+        $(".card").removeClass("active");
+        $($nextCard).addClass("active");
+    }
+
+    function getNextCard(direction) {
+        ActiveCardId = getCurrentCardId();
         switch (direction) {
             case "up":
-                // code block
+                ActiveCardId = parseInt(ActiveCardId) - 1;
+                showNextCard(ActiveCardId);
                 break;
-            case y:
-                // code block
+            case "down":
+                ActiveCardId = parseInt(ActiveCardId) + 1;
+                showNextCard(ActiveCardId);
+                break;
+            case "left":
+                ActiveCardId = parseInt(ActiveCardId) - 100;
+                showNextCard(ActiveCardId);
+                break;
+            case "right":
+                ActiveCardId = parseInt(ActiveCardId) + 100;
+                showNextCard(ActiveCardId);
                 break;
             default:
             // code block
@@ -66,15 +86,19 @@
 
     function goUp() {
         console.log("going up");
+        getNextCard("up");
     }
     function goDown() {
         console.log("going down");
+        getNextCard("down");
     }
     function goLeft() {
         console.log("going left");
+        getNextCard("left");
     }
     function goRight() {
         console.log("going right");
+        getNextCard("right");
     }
 
     document.onkeydown = checkKey;
@@ -97,6 +121,14 @@
         }
 
     }
+
+    function setZindex() {
+        $(".card").each(function (index) {
+            $(this).css("zIndex", $(this).attr("id"));
+        });
+    }
+
+    setZindex();
 
 })(jQuery);
 
