@@ -53,11 +53,14 @@
 
     function showNextCard(cardId) {
         var $nextCard = $("#" + cardId);
+        if ($($nextCard).length > 0) {
+            console.log($nextCard.attr("id"));
 
-        console.log($nextCard.attr("id"));
-
-        $(".card").removeClass("active");
-        $($nextCard).addClass("active");
+            $(".card").removeClass("active");
+            $($nextCard).addClass("active");
+        } else {
+            console.log("Nothing more to show...");
+        }
     }
 
     function getNextCard(direction) {
@@ -124,7 +127,18 @@
 
     function setZindex() {
         $(".card").each(function (index) {
-            $(this).css("zIndex", $(this).attr("id"));
+            var theId = parseInt($(this).attr("id"));
+            if (!!theId) {
+                $(this).css("zIndex", theId);
+
+                var sameColumnDiff = theId - ActiveCardId;
+
+                if (sameColumnDiff > 1 && sameColumnDiff < 100) {
+                    $(this).css("top", (parseInt(sameColumnDiff) * 100) + "vh");
+                }
+            } else {
+                console.log("no where else to go");
+            }
         });
     }
 

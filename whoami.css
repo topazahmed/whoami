@@ -24,25 +24,22 @@ body {
       height: 99vh;
       border: none;
       position: absolute;
-      top: 0;
       visibility: hidden;
       opacity: 0;
-      transition: all .1s; }
+      transition: all .5s; }
       body .main-content .card.active {
         visibility: visible;
         opacity: 1;
-        transition: all .1s;
-        -moz-transition: opacity 0.4s ease-in-out;
-        -o-transition: opacity 0.4s ease-in-out;
-        -webkit-transition: opacity 0.4s ease-in-out;
-        transition: opacity 0.4s ease-in-out; }
+        transition: all .5s;
+        top: 0px !important;
+        left: 0px !important;
+        bottom: 0px !important;
+        right: 0px !important; }
         body .main-content .card.active.up {
           overflow-y: hidden;
-          max-height: 500px;
           /* approximate max height */
           transition-property: all;
-          transition-duration: .5s;
-          transition-timing-function: cubic-bezier(0, 1, 0.5, 1); }
+          transition-duration: .5s; }
       body .main-content .card .content {
         vertical-align: middle;
         height: 100%;
