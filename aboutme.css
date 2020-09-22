@@ -1,0 +1,67 @@
+html {
+  margin: 0;
+  padding: 0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Architects Daughter', cursive; }
+  body .nav {
+    height: 5px;
+    transition: all .5s; }
+    body .nav:hover, body .nav.active {
+      height: 60px;
+      transition: all .5s; }
+  body .main-content .card {
+    border: none;
+    display: flex;
+    align-items: center;
+    flex-direction: unset;
+    transition: all .5s; }
+    body .main-content .card.active {
+      visibility: visible;
+      opacity: 1;
+      transition: all .5s; }
+      body .main-content .card.active.up {
+        overflow-y: hidden;
+        /* approximate max height */
+        transition-property: all;
+        transition-duration: .5s; }
+    body .main-content .card .content {
+      vertical-align: middle;
+      height: 100%;
+      margin: 0 auto; }
+      body .main-content .card .content h1,
+      body .main-content .card .content h2,
+      body .main-content .card .content h3,
+      body .main-content .card .content h4 {
+        text-align: center; }
+  body .dot {
+    width: 2px;
+    height: 2px;
+    background-color: black;
+    position: absolute; }
+
+@-webkit-keyframes left-to-right {
+  from {
+    left: -100%; }
+  to {
+    left: 0; } }
+
+@-webkit-keyframes right-to-left {
+  from {
+    left: 0; }
+  to {
+    left: 100%; } }
+
+@keyframes left-to-right {
+  from {
+    left: -100%; }
+  to {
+    left: 0; } }
+
+@keyframes right-to-left {
+  from {
+    left: 0; }
+  to {
+    left: 100%; } }
