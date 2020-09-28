@@ -16,7 +16,7 @@ body {
     border: none;
     display: flex;
     align-items: center;
-    flex-direction: unset;
+    flex-direction: column;
     transition: all .5s; }
     body .main-content .card.active {
       visibility: visible;
